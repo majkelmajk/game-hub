@@ -3,11 +3,15 @@ import logo from "../assets/react.svg"
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
-function NavBar() {
+interface SearchInputProps {
+    onSearch: (search: string) => void;
+}
+
+function NavBar({onSearch}: SearchInputProps) {
     return (
         <HStack padding='10px'>
             <Image src={logo} boxSize='60px' />
-            <SearchInput />
+            <SearchInput onSearch={onSearch} />
             <ColorModeSwitch></ColorModeSwitch>
         </HStack>
     )
