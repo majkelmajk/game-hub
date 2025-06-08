@@ -3,6 +3,7 @@ import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import {BsChevronDown} from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
 import {Platform} from "../hooks/useGames";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
     onSelectPlatform: (platform: Platform) => void
@@ -10,8 +11,7 @@ interface Props {
 }
 
 function PlatformSelector({onSelectPlatform, selectedPlatformId}: Props) {
-    const {data: platforms} = usePlatforms()
-    const platform = platforms?.results.find(p => p.id === selectedPlatformId)
+    const platform = usePlatform(selectedPlatformId)
     const {data, error} = usePlatforms()
 
     if (error) return null;
