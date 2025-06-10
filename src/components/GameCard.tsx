@@ -6,6 +6,7 @@ import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import placeholderImage from "../assets/game_placeholder.png"
 import Emoji from "./Emoji";
+import {Link} from "react-router-dom";
 
 interface GameCardProps {
     game: Game
@@ -15,6 +16,7 @@ function GameCard({game}: GameCardProps) {
     const image = game.background_image
         ? getCroppedImageUrl(game.background_image)
         : placeholderImage;
+
     return (
         <Card>
             <Image src={image}/>
@@ -24,7 +26,9 @@ function GameCard({game}: GameCardProps) {
                     <CriticScore score={game.metacritic}/>
                 </HStack>
                 <Heading fontSize='2xl'>
-                    {game.name}
+                    <Link to={'/game/' + game.slug}>
+                        {game.name}
+                    </Link>
                     <Emoji rating={game.rating_top} />
                 </Heading>
             </CardBody>
