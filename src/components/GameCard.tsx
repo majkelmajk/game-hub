@@ -6,7 +6,7 @@ import getCroppedImageUrl from "../services/image-url";
 import placeholderImage from "../assets/game_placeholder.png"
 import Emoji from "./Emoji";
 import {Link} from "react-router-dom";
-import {Game} from "../entities/Game";
+import Game from "../entities/Game";
 
 interface GameCardProps {
     game: Game
